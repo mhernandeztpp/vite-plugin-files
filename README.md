@@ -1,5 +1,10 @@
 # vite-plugin-files
 
+[![npm version](https://badgen.net/npm/v/vite-plugin-files)](https://www.npmjs.com/package/vite-plugin-files)
+[![monthly downloads](https://badgen.net/npm/dm/vite-plugin-files)](https://www.npmjs.com/package/vite-plugin-files)
+[![types](https://badgen.net/npm/types/vite-plugin-files)](https://github.com/hannoeru/vite-plugin-files/blob/main/src/types.ts)
+[![license](https://badgen.net/npm/license/vite-plugin-files)](https://github.com/hannoeru/vite-plugin-files/blob/main/LICENSE)
+
 File system plugin for [Vite](https://github.com/vitejs/vite) plugin. It is designed for vite plugins that need to monitor file changes, which is not helpful for the actual vite project.
 
 Thanks vite-plugin-pages for inspiration
