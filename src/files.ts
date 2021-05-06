@@ -11,22 +11,24 @@ export async function getTrees(path: string, options: ResolvedOptions): Promise<
         exclude: [/node_modules/, /.git/, /\*\*\/__\*__\/\*\*/, ...exclude],
         extensions
     });
-    console.log("extensions", extensions);
     return files;
 }
 
 export function generateFileTree(tree: Dree, rootPath: string = ".", options: ResolvedOptions): GeneratorTree {
     const { onFilterFile } = options;
 
-    function recursiveFileTree(tree: Dree, onFilterFile: onFilterFile) {
+    function recursiveFileTree(tree: Dree) {
         const { relativePath, path, type, children, name, extension } = tree;
         let generateTree: GeneratorTree = { name, path, type, extension, relativePath: `${rootPath}/${relativePath}` };
 
-        if (children && children.length > 0)
-            generateTree.children = children.map((el) => recursiveFileTree(el, onFilterFile));
+        if (children && children.length > 0) {
+            generateTree.children = children
+                .map((el) => recursiveFileTree(el))
+                .filter((el) => el.type !== "file" || onFilterFile(el.path));
+        }
 
         return generateTree;
     }
 
-    return recursiveFileTree(tree, onFilterFile);
+    return recursiveFileTree(tree);
 }
