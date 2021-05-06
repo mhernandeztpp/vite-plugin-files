@@ -2,7 +2,7 @@ import { resolve } from "path";
 import type { Plugin } from "vite";
 import { ResolvedOptions, UserOptions, GeneratorTree } from "./types";
 import { resolveOptions } from "./options";
-import { getTrees, generateFileTree } from "./files";
+import { getTrees } from "./files";
 import { slash, isTarget } from "./utils";
 
 function filesPlugin(userOptions: UserOptions, customVitePlugin: Partial<Plugin> = {}): Plugin {
@@ -37,9 +37,7 @@ function filesPlugin(userOptions: UserOptions, customVitePlugin: Partial<Plugin>
             for (const pageDir of options.dirOptions) {
                 const pageDirPath = slash(resolve(options.root, pageDir.dir));
 
-                const files = await getTrees(pageDirPath, options);
-                const generatedTree = generateFileTree(files, pageDir.dir, options);
-
+                const generatedTree = await getTrees(pageDirPath, pageDir.dir, options);
                 generatedTrees.push(generatedTree);
             }
 
