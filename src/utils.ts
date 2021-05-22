@@ -1,8 +1,9 @@
 import { resolve } from "path";
-import { ResolvedOptions, GeneratorTree, GeneratorFile } from "./types";
+import { ResolvedOptions, GeneratorTree, GeneratedTrees, GeneratorFile } from "./types";
 
-export function flattenTree(trees: GeneratorTree[], onFilterFile: (el: GeneratorTree) => boolean = () => true) {
+export function flattenTree(trees: GeneratedTrees, onFilterFile: (el: GeneratorTree) => boolean = () => true) {
     let flattenedFiles: GeneratorFile[] = [];
+    const innerTrees = trees.map((el) => el[0]);
     function recurseFlatten(trees: GeneratorTree[]) {
         trees.forEach((el) => {
             const { name, path, relativePath, extension, type, children } = el;
@@ -10,7 +11,7 @@ export function flattenTree(trees: GeneratorTree[], onFilterFile: (el: Generator
             if (children && children.length > 0) recurseFlatten(children);
         });
     }
-    recurseFlatten(trees);
+    recurseFlatten(innerTrees);
     return flattenedFiles;
 }
 

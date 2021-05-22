@@ -1,5 +1,6 @@
 export interface PageDirOptions {
     dir: string;
+    [key: string]: string;
 }
 
 export interface GeneratorFile {
@@ -13,8 +14,10 @@ export interface GeneratorTree extends GeneratorFile {
     children?: GeneratorTree[];
 }
 
+export type GeneratedTrees = [GeneratorTree, PageDirOptions][];
+
 export type onFilterFile = (file: string) => boolean | Promise<boolean>;
-export type onGeneratedClient = (trees: GeneratorTree[], options: Options) => string | Promise<string>;
+export type onGeneratedClient = (trees: GeneratedTrees, options: Options) => string | Promise<string>;
 
 /**
  * Plugin options.

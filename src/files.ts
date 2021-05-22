@@ -21,8 +21,6 @@ export async function getTrees(
 function generateFileTree(tree: Dree, rootPath: string, options: ResolvedOptions): GeneratorTree {
     const { onFilterFile } = options;
 
-    console.log("tree", tree);
-
     function recursiveFileTree(tree: Dree) {
         const { relativePath, path, type, children, name, extension } = tree;
         let generateTree: GeneratorTree = {

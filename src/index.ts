@@ -1,6 +1,6 @@
 import { resolve } from "path";
 import type { Plugin } from "vite";
-import { ResolvedOptions, UserOptions, GeneratorTree } from "./types";
+import { ResolvedOptions, UserOptions, GeneratedTrees } from "./types";
 import { resolveOptions } from "./options";
 import { getTrees } from "./files";
 import { slash, isTarget } from "./utils";
@@ -27,18 +27,17 @@ function filesPlugin(userOptions: UserOptions, customVitePlugin: Partial<Plugin>
             watcher.on("unlink", (file) => isTarget(file, options) && fullReload());
         },
         resolveId(id) {
-            console.log("resolveId id", id);
             return id == options.virtualId ? options.virtualModuleId : null;
         },
         async load(id) {
             if (id !== options.virtualModuleId) return;
 
-            let generatedTrees: GeneratorTree[] = [];
+            let generatedTrees: GeneratedTrees = [];
             for (const pageDir of options.dirOptions) {
                 const pageDirPath = slash(resolve(options.root, pageDir.dir));
 
                 const generatedTree = await getTrees(pageDirPath, pageDir.dir, options);
-                generatedTrees.push(generatedTree);
+                generatedTrees.push([generatedTree, pageDir]);
             }
 
             const clientCode = options.onGeneratedClient(generatedTrees, options);
