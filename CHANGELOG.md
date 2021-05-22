@@ -1,4 +1,13 @@
-## [1.0.1](https://github.com/morelearn1990/vite-plugin-files/compare/1.0.0...1.0.1) (2021-05-06)
+## [1.0.2](https://github.com/morelearn1990/vite-plugin-files/compare/v1.0.1...v1.0.2) (2021-05-22)
+
+
+### Bug Fixes
+
+* 将 pageDir 传递到 onGeneratedClient 方便上层插件处理 ([0cc8093](https://github.com/morelearn1990/vite-plugin-files/commit/0cc8093e23fd38fba7e6d2e6dc2ad365e9a9fe54))
+
+
+
+## [1.0.1](https://github.com/morelearn1990/vite-plugin-files/compare/1.0.0...v1.0.1) (2021-05-06)
 
 
 ### Bug Fixes
