@@ -2,7 +2,9 @@ import { resolve } from "path";
 import { resolveOptions } from "../src/options";
 import { getTrees } from "../src/files";
 
-const options = resolveOptions({});
+const options = resolveOptions({
+    exclude: [/components/]
+});
 const testDir = "./test/files";
 const testAbsoluteDir = resolve(testDir);
 const expectFiles = {
