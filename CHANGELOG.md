@@ -1,3 +1,13 @@
+## [1.0.3](https://github.com/morelearn1990/vite-plugin-files/compare/v1.0.2...v1.0.3) (2021-05-23)
+
+
+### Bug Fixes
+
+* 修复当dir没有获取到tree时的错误 ([b5ed748](https://github.com/morelearn1990/vite-plugin-files/commit/b5ed74811615188035f5fadc6b26dbf555c0dd80))
+* 修复文件增加、修改、删除更新的错误 ([51fc3da](https://github.com/morelearn1990/vite-plugin-files/commit/51fc3dacf3e12b582c62c78f0ea33c501f5e6519))
+
+
+
 ## [1.0.2](https://github.com/morelearn1990/vite-plugin-files/compare/v1.0.1...v1.0.2) (2021-05-22)
 
 
