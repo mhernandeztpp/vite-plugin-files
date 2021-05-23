@@ -37,7 +37,7 @@ function filesPlugin(userOptions: UserOptions, customVitePlugin: Partial<Plugin>
                 const pageDirPath = slash(resolve(options.root, pageDir.dir));
 
                 const generatedTree = await getTrees(pageDirPath, pageDir.dir, options);
-                generatedTrees.push([generatedTree, pageDir]);
+                generatedTree && generatedTrees.push([generatedTree, pageDir]);
             }
 
             const clientCode = options.onGeneratedClient(generatedTrees, options);

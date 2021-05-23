@@ -40,5 +40,5 @@ function generateFileTree(tree: Dree, rootPath: string, options: ResolvedOptions
         return generateTree;
     }
 
-    return recursiveFileTree(tree);
+    return tree && recursiveFileTree(tree);
 }
