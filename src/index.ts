@@ -18,12 +18,13 @@ function filesPlugin(userOptions: UserOptions, customVitePlugin: Partial<Plugin>
             const { ws, watcher, moduleGraph } = server;
 
             function fullReload() {
-                const module = moduleGraph.getModuleById(options.virtualId);
+                const module = moduleGraph.getModuleById(options.virtualModuleId);
                 module && moduleGraph.invalidateModule(module);
-                ws.send({ type: "full-reload" });
+                ws.send({ type: "full-reload", path: options.virtualModuleId });
             }
 
             watcher.on("add", (file) => isTarget(file, options) && fullReload());
+            watcher.on("change", (file) => isTarget(file, options) && options.onFilterFile(file) && fullReload());
             watcher.on("unlink", (file) => isTarget(file, options) && fullReload());
         },
         resolveId(id) {
