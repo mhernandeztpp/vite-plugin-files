@@ -1,7 +1,7 @@
 {
     "name": "vite-plugin-files",
     "description": "File system for Vite",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "main": "dist/index.js",
     "module": "dist/index.mjs",
     "types": "index.d.ts",
