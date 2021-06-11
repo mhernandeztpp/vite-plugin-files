@@ -1,13 +1,10 @@
 import { resolve } from "path";
-import type { Plugin } from "vite";
-import { ResolvedOptions, UserOptions, GeneratedTrees, ClientCode } from "./types";
+import { ResolvedOptions, UserOptions, GeneratedTrees, ClientCode, ExportPlugin } from "./types";
 import { resolveOptions } from "./options";
 import { getTrees } from "./files";
 import { slash, isTarget } from "./utils";
 
-function filesPlugin(
-    userOptions: UserOptions
-): Pick<Plugin, "name" | "enforce" | "configResolved" | "configureServer" | "resolveId" | "load"> {
+function filesPlugin(userOptions: UserOptions): ExportPlugin {
     const options: ResolvedOptions = resolveOptions(userOptions);
 
     let clientCode: ClientCode | null = null;

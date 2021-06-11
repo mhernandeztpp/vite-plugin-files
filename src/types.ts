@@ -1,3 +1,5 @@
+import type { Plugin } from "vite";
+
 export interface PageDirOptions {
     dir: string;
     [key: string]: string;
@@ -79,3 +81,7 @@ export interface ResolvedOptions extends Options {
      */
     extensionsReg: RegExp;
 }
+
+export type ExportPlugin = Required<
+    Pick<Plugin, "name" | "enforce" | "configResolved" | "configureServer" | "resolveId" | "load">
+>;
