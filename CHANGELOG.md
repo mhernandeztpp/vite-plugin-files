@@ -1,4 +1,13 @@
-# [1.1.0](https://github.com/morelearn1990/vite-plugin-files/compare/v1.0.3...v1.1.0) (2021-06-11)
+## [1.1.1](https://github.com/morelearn1990/vite-plugin-files/compare/1.1.0...1.1.1) (2021-06-11)
+
+
+### Bug Fixes
+
+* 修复类型 ([4e4ec69](https://github.com/morelearn1990/vite-plugin-files/commit/4e4ec69fc6afd54eab3f32a0e01dfb2ca04d826c))
+
+
+
+# [1.1.0](https://github.com/morelearn1990/vite-plugin-files/compare/v1.0.3...1.1.0) (2021-06-11)
 
 
 ### Bug Fixes
