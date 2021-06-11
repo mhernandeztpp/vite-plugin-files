@@ -9,6 +9,11 @@ File system plugin for [Vite](https://github.com/vitejs/vite) plugin. It is desi
 
 Thanks vite-plugin-pages for inspiration
 
+## 插件提供功能
+
+1. 根据配置文件读取对应格式文件并生成对应的代码
+2. 当文件或文件夹修改后的重新加载
+
 ## 使用方法
 
 1. 普通使用
