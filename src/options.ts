@@ -1,7 +1,7 @@
-import { UserOptions, ResolvedOptions, PageDirOptions, onGeneratedClient } from "./types";
+import { UserOptions, ResolvedOptions, PageDirOptions, OnGeneratedClient } from "./types";
 import { flattenTree } from "./utils";
 
-const onGeneratedClientDefault: onGeneratedClient = (trees) => {
+const onGeneratedClientDefault: OnGeneratedClient = (trees) => {
     const files = flattenTree(trees, (el) => el.type == "file");
 
     const keyArray: string[] = [];

@@ -1,5 +1,5 @@
 import { scanAsync, Dree } from "dree";
-import { ResolvedOptions, onFilterFile, GeneratorTree } from "./types";
+import { ResolvedOptions, GeneratorTree } from "./types";
 
 export async function getTrees(
     absolutePath: string,

@@ -8,7 +8,7 @@ export interface GeneratorFile {
     type: string;
     path: string;
     relativePath: string;
-    extension?: string;
+    extension?: string | undefined;
 }
 export interface GeneratorTree extends GeneratorFile {
     children?: GeneratorTree[];
@@ -16,8 +16,8 @@ export interface GeneratorTree extends GeneratorFile {
 
 export type GeneratedTrees = [GeneratorTree, PageDirOptions][];
 
-export type onFilterFile = (file: string) => boolean | Promise<boolean>;
-export type onGeneratedClient = (trees: GeneratedTrees, options: Options) => string | Promise<string>;
+export type OnFilterFile = (file: string) => boolean | Promise<boolean>;
+export type OnGeneratedClient = (trees: GeneratedTrees, options: Options) => string | Promise<string>;
 
 /**
  * Plugin options.
@@ -50,11 +50,11 @@ interface Options {
     /**
      * Custom filter file
      */
-    onFilterFile: onFilterFile;
+    onFilterFile: OnFilterFile;
     /**
      * Custom generated client code
      */
-    onGeneratedClient: onGeneratedClient;
+    onGeneratedClient: OnGeneratedClient;
 }
 
 export type UserOptions = Partial<Options>;
