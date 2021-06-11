@@ -1,6 +1,6 @@
 import { resolve } from "path";
 import type { Plugin } from "vite";
-import { ResolvedOptions, UserOptions, GeneratedTrees } from "./types";
+import { ResolvedOptions, UserOptions, GeneratedTrees, ClientCode } from "./types";
 import { resolveOptions } from "./options";
 import { getTrees } from "./files";
 import { slash, isTarget } from "./utils";
@@ -8,6 +8,9 @@ import { slash, isTarget } from "./utils";
 function filesPlugin(userOptions: UserOptions, customVitePlugin: Partial<Plugin> = {}): Plugin {
     const options: ResolvedOptions = resolveOptions(userOptions);
     const { name, enforce, load, resolveId, configureServer, configResolved, ...filteredConfig } = customVitePlugin;
+
+    let clientCode: ClientCode | null = null;
+
     return {
         name: options.name,
         enforce: "pre",
@@ -20,6 +23,7 @@ function filesPlugin(userOptions: UserOptions, customVitePlugin: Partial<Plugin>
             function fullReload() {
                 const module = moduleGraph.getModuleById(options.virtualModuleId);
                 module && moduleGraph.invalidateModule(module);
+                clientCode = null;
                 ws.send({ type: "full-reload", path: options.virtualModuleId });
             }
 
@@ -32,6 +36,7 @@ function filesPlugin(userOptions: UserOptions, customVitePlugin: Partial<Plugin>
         },
         async load(id) {
             if (id !== options.virtualModuleId) return;
+            if (clientCode) return clientCode;
 
             let generatedTrees: GeneratedTrees = [];
             for (const pageDir of options.dirOptions) {
@@ -41,7 +46,7 @@ function filesPlugin(userOptions: UserOptions, customVitePlugin: Partial<Plugin>
                 generatedTree && generatedTrees.push([generatedTree, pageDir]);
             }
 
-            const clientCode = options.onGeneratedClient(generatedTrees, options);
+            clientCode = options.onGeneratedClient(generatedTrees, options);
             return clientCode;
         },
         ...filteredConfig

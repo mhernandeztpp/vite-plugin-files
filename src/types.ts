@@ -17,7 +17,8 @@ export interface GeneratorTree extends GeneratorFile {
 export type GeneratedTrees = [GeneratorTree, PageDirOptions][];
 
 export type OnFilterFile = (file: string) => boolean | Promise<boolean>;
-export type OnGeneratedClient = (trees: GeneratedTrees, options: Options) => string | Promise<string>;
+export type ClientCode = string;
+export type OnGeneratedClient = (trees: GeneratedTrees, options: Options) => ClientCode;
 
 /**
  * Plugin options.
