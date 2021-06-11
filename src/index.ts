@@ -5,9 +5,10 @@ import { resolveOptions } from "./options";
 import { getTrees } from "./files";
 import { slash, isTarget } from "./utils";
 
-function filesPlugin(userOptions: UserOptions, customVitePlugin: Partial<Plugin> = {}): Plugin {
+function filesPlugin(
+    userOptions: UserOptions
+): Pick<Plugin, "name" | "enforce" | "configResolved" | "configureServer" | "resolveId" | "load"> {
     const options: ResolvedOptions = resolveOptions(userOptions);
-    const { name, enforce, load, resolveId, configureServer, configResolved, ...filteredConfig } = customVitePlugin;
 
     let clientCode: ClientCode | null = null;
 
@@ -48,8 +49,7 @@ function filesPlugin(userOptions: UserOptions, customVitePlugin: Partial<Plugin>
 
             clientCode = options.onGeneratedClient(generatedTrees, options);
             return clientCode;
-        },
-        ...filteredConfig
+        }
     };
 }
 
