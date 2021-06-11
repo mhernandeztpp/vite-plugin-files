@@ -1,3 +1,18 @@
+# [1.1.0](https://github.com/morelearn1990/vite-plugin-files/compare/v1.0.3...v1.1.0) (2021-06-11)
+
+
+### Bug Fixes
+
+* 修复类型错误 ([6987545](https://github.com/morelearn1990/vite-plugin-files/commit/69875451c653dd680123cb4b1d6ef0df97c5f989))
+* cancel not necessary customVitePlugin ([4e51a51](https://github.com/morelearn1990/vite-plugin-files/commit/4e51a51d12d2078eefa3ff52baa7d1cb02ca326d))
+
+
+### Features
+
+* 增加简单缓存，重复import时不再重复生成 ([c3430cd](https://github.com/morelearn1990/vite-plugin-files/commit/c3430cdbcff33a6e14f0381f8f8f39283cfaaca6))
+
+
+
 ## [1.0.3](https://github.com/morelearn1990/vite-plugin-files/compare/v1.0.2...v1.0.3) (2021-05-23)
 
 
