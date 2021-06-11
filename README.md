@@ -9,6 +9,28 @@ File system plugin for [Vite](https://github.com/vitejs/vite) plugin. It is desi
 
 Thanks vite-plugin-pages for inspiration
 
+## 使用方法
+
+1. 普通使用
+
+```ts
+import { defineConfig } from "vite";
+import Files from "vite-plugin-files";
+
+export default defineConfig({
+    plugins: [
+        Files({
+            name: "vite-plugin-files",
+            virtualId: "generate-files",
+            filesDir: ["./src/utils", "./src/lib"],
+            extensions: ["ts"]
+        })
+    ]
+});
+```
+
+2. 定制开发插件请参考 `vite-plugin-react-router`
+
 ## git 提交规范(Angular 规范)
 
 > 1.  feat 新增一个功能
