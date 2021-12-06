@@ -12,7 +12,7 @@ export async function getTrees(
         normalize: true,
         sizeInBytes: false,
         size: false,
-        exclude: [/node_modules/, /.git/, /\*\*\/__\*__\/\*\*/, ...exclude],
+        exclude: [/node_modules/, /\.git/, /\*\*\/__\*__\/\*\*/, ...exclude],
         extensions
     });
     return generateFileTree(files, relativePath, options);
